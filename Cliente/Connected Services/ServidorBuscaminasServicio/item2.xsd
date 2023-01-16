@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Contratos" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Contratos" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8080/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="Celda">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="columnaPosicion" type="xs:int" />
+      <xs:element minOccurs="0" name="esMarcada" type="xs:boolean" />
+      <xs:element minOccurs="0" name="esMinada" type="xs:boolean" />
+      <xs:element minOccurs="0" name="esRevelada" type="xs:boolean" />
+      <xs:element minOccurs="0" name="filaPosicion" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Celda" nillable="true" type="tns:Celda" />
+  <xs:complexType name="Sala">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="codigoSala" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="jugadoresChatCallback" nillable="true" type="q1:ArrayOfKeyValueOfstringanyType" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="jugadoresJuegoCallback" nillable="true" type="q2:ArrayOfKeyValueOfstringanyType" />
+      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="jugadoresSalaCallback" nillable="true" type="q3:ArrayOfKeyValueOfstringanyType" />
+      <xs:element minOccurs="0" name="tablero" nillable="true" type="tns:Tablero" />
+      <xs:element minOccurs="0" name="turno" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Sala" nillable="true" type="tns:Sala" />
+  <xs:complexType name="Tablero">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="alto" type="xs:int" />
+      <xs:element minOccurs="0" name="ancho" type="xs:int" />
+      <xs:element minOccurs="0" name="bombas" nillable="true" type="tns:ArrayOfCelda" />
+      <xs:element minOccurs="0" name="numeroMinas" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Tablero" nillable="true" type="tns:Tablero" />
+  <xs:complexType name="ArrayOfCelda">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Celda" nillable="true" type="tns:Celda" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCelda" nillable="true" type="tns:ArrayOfCelda" />
+</xs:schema>
